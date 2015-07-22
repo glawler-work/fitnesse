@@ -1,0 +1,133 @@
+!path C:\projects\fitnesse-test\target\fitnesse-starter-1.0-SNAPSHOT.jar
+!path C:\Users\lawlerg\.m2\repository\org\fitnesse\fitlibrary\20080812\fitlibrary-20080812.jar
+!path C:\Users\lawlerg\.m2\repository\org\springframework\spring-web\4.1.5.RELEASE\spring-web-4.1.5.RELEASE.jar
+!path C:\Users\lawlerg\.m2\repository\org\springframework\spring-core\4.1.5.RELEASE\spring-core-4.1.5.RELEASE.jar
+!path C:\Users\lawlerg\.m2\repository\org\springframework\spring-beans\4.1.5.RELEASE\spring-beans-4.1.5.RELEASE.jar
+!path C:\Users\lawlerg\.m2\repository\org\apache\httpcomponents\httpcore\4.4.1\httpcore-4.4.1.jar
+!path C:\Users\lawlerg\.m2\repository\org\apache\httpcomponents\httpclient\4.5\httpclient-4.5.jar
+!path C:\Users\lawlerg\.m2\repository\commons-logging\commons-logging\1.1.3\commons-logging-1.1.3.jar
+!path C:\Users\lawlerg\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.5.4\jackson-core-2.5.4.jar
+!path C:\Users\lawlerg\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.5.4\jackson-databind-2.5.4.jar
+!path C:\Users\lawlerg\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.5.0\jackson-annotations-2.5.0.jar
+
+|Import          |
+|fitnesse.app.fit|
+
+'''''Fixture Gallery'''''
+
+'''Column Fixtures'''
+
+!| OMDBAPI Column Fixture                     |
+|title     |name?     |successResponse?|count?|
+|star wars |Star Wars |True            |1     |
+|goodfellas|Goodfellas|True            |2     |
+|xyzzxy    |null      |False           |3     |
+
+!| OMDBAPI Column Fixture                 |
+|title     |=name?|successResponse?|count?|
+|goodfellas|name1 |True            |4     |
+|casino    |name2 |True            |5     |
+
+!| OMDBAPI Column Fixture                 |
+|title=|name?     |successResponse?|count?|
+|name1 |Goodfellas|True            |6     |
+|name2 |Casino    |True            |7     |
+
+----
+'''Do Fixtures'''
+
+!| OMDBAPI Do Fixture                                    |
+|set expected|Goodfellas                                 |
+|query       |goodfellas|with id|tt0099685|and type|movie|
+|Is Expected Title                                       |
+
+----
+'''Collection Fixtures'''
+
+!| OMDBAPI Array Fixture|goodfellas|
+|title                  |response  |
+|Star Wars              |True      |
+|Goodfellas             |True      |
+|Goodfellas             |True      |
+|Casino                 |True      |
+|Goodfellas             |True      |
+|Casino                 |True      |
+|Goodfellas             |True      |
+
+!| OMDBAPI Row Fixture|goodfellas|
+|title                |response  |
+|Goodfellas           |True      |
+
+!| OMDBAPI Set Fixture|
+|title      |response |
+|Star Wars  |True     |
+|Goodfellas |True     |
+|Goodfellas |True     |
+|Goodfellas |True     |
+|Goodfellas |True     |
+|Goodfellas |True     |
+|Casino     |True     |
+|Casino     |True     |
+
+!| OMDBAPI Sub Set Fixture|
+|title        |response   |
+|Star Wars    |True       |
+|Goodfellas   |True       |
+
+----
+'''Table Fixtures'''
+
+!| OMDBAPI Table Fixture              |
+|title     |name      |successResponse|
+|star wars |Star Wars |True           |
+|goodfellas|Goodfellas|True           |
+|xyzzxy    |null      |False          |
+
+----
+'''Calculate Fixtures'''
+
+!| OMDBAPI Column Fixture                                             |
+|title     |name?     |=requestsViaGet?|=requestsViaGetWithParameters?|
+|star wars |Star Wars |rvg1            |rvgwp1                        |
+|goodfellas|Goodfellas|rvg2            |rvgwp2                        |
+|xyzzxy    |null      |rvg3            |rvgwp3                        |
+
+Symbols have to be accessed within fixture...
+!| OMDBAPI Calculate Fixture|
+|arg1   |arg2    |  |total  |
+|rvg1   |rvgwp1  |  |14     |
+|rvg2   |rvgwp2  |  |15     |
+|rvg3   |rvgwp3  |  |16     |
+
+!| OMDBAPI Constraint Fixture|
+|arg1           |arg2        |
+|rvgwp1         |rvg1        |
+|rvgwp2         |rvg2        |
+|rvgwp3         |rvg3        |
+
+----
+'''Set Up Fixture'''
+
+!|OMDBAPI Set Up Fixture                          |
+|Requests Via Get|Requests Via Get With Parameters|
+
+----
+'''Sequence Fixtures'''
+
+!| OMDBAPI Sequence Fixture            |
+|setExpected|Goodfellas                |
+|query      |goodfellas|tt0099685|movie|
+|isExpectedTitle                       |
+
+----
+'''Combination Fixture'''
+Think of a "distance between cities" chart
+!| OMDBAPI Combination Fixture|
+|         |2        |3        |
+|1        |3        |4        |
+|2        |4        |5        |
+
+----
+'''Summary Fixture'''
+
+!| SummaryFixture|
